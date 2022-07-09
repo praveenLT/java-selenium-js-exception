@@ -12,7 +12,7 @@
     ```
      install maven
     ```
-###Capturing and printing JS exceptions:
+### Capturing and printing JS exceptions:
 
 ```java
         DevTools devTools = ((HasDevTools) driver).getDevTools();
