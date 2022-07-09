@@ -12,7 +12,24 @@
     ```
      install maven
     ```
-    
+###Capturing and printing JS exceptions:
+
+```java
+        DevTools devTools = ((HasDevTools) driver).getDevTools();
+        devTools.createSession();
+
+        List<JavascriptException> jsExceptionsList = new ArrayList<>();
+        Consumer<JavascriptException> addEntry = jsExceptionsList::add;
+        devTools.getDomains().events().addJavascriptExceptionListener(addEntry);
+
+        //print
+        for (JavascriptException jsException : jsExceptionsList) {
+            System.out.println("My JS exception message: " + jsException.getMessage());
+            System.out.println("My JS exception system: " + jsException.getSystemInformation());
+            jsException.printStackTrace();
+            success = true;
+        }
+```
 ### Run your First Test
 1. Clone the Java-Selenium-Sample repository. 
 ```
